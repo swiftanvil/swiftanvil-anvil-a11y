@@ -5,6 +5,7 @@ import Testing
 @Suite("A11yID Extended")
 struct A11yIDExtendedTests {
     // MARK: - Hashable
+
     @Test("equal IDs have same hash")
     func equalHash() {
         let a = A11yID(rawValue: "login.button")
@@ -39,6 +40,7 @@ struct A11yIDExtendedTests {
     }
 
     // MARK: - Sendable
+
     @Test("can cross actor boundary")
     func sendableAcrossActors() async {
         let id = A11yID(rawValue: "cross.actor")
@@ -54,6 +56,7 @@ struct A11yIDExtendedTests {
     }
 
     // MARK: - Chained appending
+
     @Test("chained string appending")
     func chainedStringAppend() {
         let id = A11yID(rawValue: "root")
@@ -86,6 +89,7 @@ struct A11yIDExtendedTests {
     }
 
     // MARK: - ExpressibleByStringLiteral edge cases
+
     @Test("empty string literal")
     func emptyLiteral() {
         let id: A11yID = ""
@@ -105,6 +109,7 @@ struct A11yIDExtendedTests {
     }
 
     // MARK: - Platform guards (compile-time only)
+
     @Test("rawRepresentable conformance")
     func rawRepresentable() {
         let id = A11yID(rawValue: "test")

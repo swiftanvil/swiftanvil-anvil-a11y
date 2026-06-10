@@ -8,7 +8,7 @@ public struct A11yID: RawRepresentable, ExpressibleByStringLiteral, Hashable, Se
     }
 
     public init(stringLiteral value: String) {
-        self.rawValue = value
+        rawValue = value
     }
 
     public func appending(_ segment: String) -> A11yID {
@@ -21,33 +21,33 @@ public struct A11yID: RawRepresentable, ExpressibleByStringLiteral, Hashable, Se
 }
 
 #if canImport(SwiftUI) && !os(watchOS)
-import SwiftUI
+    import SwiftUI
 
-extension View {
-    /// Assigns a typed accessibility identifier to a SwiftUI view.
-    @inlinable
-    public func a11ID(_ id: A11yID) -> some View {
-        accessibilityIdentifier(id.rawValue)
+    public extension View {
+        /// Assigns a typed accessibility identifier to a SwiftUI view.
+        @inlinable
+        func a11ID(_ id: A11yID) -> some View {
+            accessibilityIdentifier(id.rawValue)
+        }
     }
-}
 #endif
 
 #if canImport(UIKit) && !os(watchOS)
-import UIKit
+    import UIKit
 
-extension UIView {
-    /// Assigns a typed accessibility identifier to a UIKit view.
-    @inlinable
-    public func setA11ID(_ id: A11yID) {
-        accessibilityIdentifier = id.rawValue
+    public extension UIView {
+        /// Assigns a typed accessibility identifier to a UIKit view.
+        @inlinable
+        func setA11ID(_ id: A11yID) {
+            accessibilityIdentifier = id.rawValue
+        }
     }
-}
 
-extension UIBarItem {
-    /// Assigns a typed accessibility identifier to a UIKit bar item.
-    @inlinable
-    public func setA11ID(_ id: A11yID) {
-        accessibilityIdentifier = id.rawValue
+    public extension UIBarItem {
+        /// Assigns a typed accessibility identifier to a UIKit bar item.
+        @inlinable
+        func setA11ID(_ id: A11yID) {
+            accessibilityIdentifier = id.rawValue
+        }
     }
-}
 #endif
